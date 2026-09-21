@@ -98,12 +98,6 @@ The FNO implementation uses the **NeuralOperator** library. It can be installed 
 pip install neuraloperator
 ```
 
-The FNO model can then be imported in Python using:
-
-```python
-from neuralop.models import FNO
-```
-
 Other commonly required packages can be installed using:
 
 ```bash
