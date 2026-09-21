@@ -65,7 +65,7 @@ The study investigates the following data-driven approaches:
 - **FNO:** The proposed Fourier neural operator model.
 
 The corresponding model files are located within the `Model/` directories
-of these configurations.
+of each material configuration.
 
 ## Synthetic Data Generation
 
