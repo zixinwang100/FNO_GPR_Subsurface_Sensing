@@ -86,71 +86,16 @@ This formulation also allows the learned operator to be evaluated on temporal di
 
 ## Synthetic Data Generation
 
-Synthetic GPR signals are generated using the finite-difference time-domain (FDTD) method implemented in **gprMax**, which numerically solves Maxwell's equations to simulate electromagnetic wave propagation.
-
-The simulations specify both intrinsic radar parameters and extrinsic material parameters.
-
-Material parameters considered in the simulations include:
-
-- Relative permittivity
-- Electrical conductivity
-- Layer depth
-
-Synthetic datasets are generated for the laboratory and field configurations and are used as source-domain data for model training.
+Synthetic GPR data are generated using the finite-difference time-domain
+(FDTD) method implemented in **gprMax**. Data-generation notebooks are
+provided within the `Data/` directory of each material configuration.
 
 ## Experimental Data
 
-Experimental GPR measurements are collected for four configurations:
-
-- Laboratory single-layer soil
-- Laboratory two-layer soil–wood shavings
-- Field single-layer bare soil
-- Field two-layer soil–leaves and soil–wood chips
-
-The experimental measurements serve as the real-world target domain for evaluating the generalization capability of models trained on synthetic data.
-
-For the field experiments, reference soil properties are measured using an in situ TEROS-12 capacitance sensor. Soil moisture is additionally characterized in terms of volumetric water content (VWC).
-
-## Data Preprocessing
-
-Each GPR A-scan is converted to its amplitude envelope using the Hilbert transform.
-
-The amplitude envelope is normalized to the range [0, 1] according to its maximum amplitude. Material-property labels are independently normalized using min–max normalization.
-
-The preprocessing procedure is applied consistently to the synthetic and experimental GPR signals prior to model training and evaluation.
-
-## Resolution- and Domain-Invariant Evaluation
-
-In addition to material-property estimation accuracy, the study investigates two important generalization capabilities of the proposed FNO.
-
-### Resolution Invariance
-
-The spectral-convolution formulation of the FNO enables the learned operator to be evaluated on GPR signals with temporal resolutions different from those used during training.
-
-This capability is particularly useful in zero-shot radar sensing because the temporal resolution of experimental measurements may differ from that of synthetic training data.
-
-### Domain Invariance
-
-Simulation-to-reality discrepancies can arise from measurement noise, discretization errors, modeling assumptions, boundary conditions, material uncertainties, and imperfect radar-model calibration.
-
-Fourier-mode truncation emphasizes the dominant low-frequency spectral components while suppressing high-frequency discrepancies, thereby improving robustness to differences between synthetic and real GPR signals.
-
-The robustness of the proposed FNO is further evaluated under increased simulation-to-reality discrepancies.
-
-## Evaluation Metrics
-
-Model performance is evaluated using the following metrics:
-
-- Pearson correlation coefficient (`R`)
-- Bias
-- Root mean squared error (`RMSE`)
-- Unbiased root mean squared error (`ubRMSE`)
-- Standard deviation of predictions
-- Training cost
-- Inference latency
-- Peak GPU memory
-
-The Pearson correlation coefficient is used to evaluate the capability of each model to capture the underlying physical variability of the target material properties, while bias, RMSE, and ubRMSE provide complementary measures of estimation accuracy.
+Experimental GPR data are provided for the laboratory single-layer,
+laboratory two-layer, field single-layer, and field two-layer material configurations.
+The corresponding data files are located within the `Data/` directories
+of these configurations.
 
 ## Requirements
 
@@ -195,28 +140,15 @@ For synthetic GPR data generation, install and configure **gprMax** following it
 
 ## Usage
 
-The provided notebooks contain the main workflows for:
-
-1. Synthetic GPR data generation
-2. Experimental GPR data loading
-3. GPR signal preprocessing
-4. Model training
-5. Zero-shot evaluation on experimental GPR measurements
-6. Material-property estimation
-7. Field soil-moisture and VWC evaluation
-8. Resolution-invariance analysis
-9. Domain-invariance analysis
-10. Performance comparison with baseline models
-
-Users should update local file paths in the notebooks as needed before execution.
+The notebooks provide the main workflows for synthetic data generation,
+model training, and model evaluation. Users should update local file
+paths in the notebooks as needed before execution.
 
 For the proposed FNO model, the NeuralOperator implementation is imported using:
 
 ```python
 from neuralop.models import FNO
 ```
-
-The FNO is trained using only synthetic source-domain GPR signals and their corresponding material-property labels. After training, the model is directly evaluated on experimental GPR measurements without additional training or fine-tuning using the experimental data.
 
 ## Citation
 
