@@ -28,25 +28,29 @@ For the field experiments, soil moisture variation is additionally evaluated in 
 
 ## Repository Contents
 
-The repository is organized according to the four experimental configurations investigated in the study:
+The repository is organized according to the four experimental
+configurations investigated in the study:
 
-- `Laboratory_Single_Layer_Material/`
-  - Synthetic data generation, experimental GPR data, and model training/evaluation notebooks for the laboratory single-layer configuration.
-
-- `Laboratory_Two_Layer_Material/`
-  - Synthetic data generation, experimental GPR data, and model training/evaluation notebooks for the laboratory two-layer configuration.
-
-- `Field_Single_Layer_Material/`
-  - Synthetic data generation, experimental field GPR data, and model training/evaluation notebooks for the field single-layer configuration.
-
-- `Field_Two_Layer_Material/`
-  - Synthetic data generation, experimental field GPR data, and model training/evaluation notebooks for the field two-layer configurations, including soil–leaves and soil–wood chips cases.
-
-- `Framework_Overview.jpg`
-  - Overview of the proposed zero-shot FNO framework.
-
-- `README.md`
-  - Description of the repository, methodology, dependencies, and usage.
+-   `Laboratory_Single_Layer_Material/`
+    -   `Data/` --- Synthetic data-generation notebook and experimental
+        GPR data for the laboratory single-layer material.
+    -   `Model/` --- CNN, DANN, MiTSformer, and FNO model notebooks.
+-   `Laboratory_Two_Layer_Material/`
+    -   `Data/` --- Synthetic data-generation notebook and experimental
+        GPR data for the laboratory two-layer material.
+    -   `Model/` --- CNN, DANN, and FNO model notebooks.
+-   `Field_Single_Layer_Material/`
+    -   `Data/` --- Synthetic data-generation notebook and experimental
+        field GPR data for the single-layer material.
+    -   `Model/` --- CNN, DANN, and FNO model notebooks.
+-   `Field_Two_Layer_Material/`
+    -   `Data/` --- Synthetic data-generation notebook for the field
+        two-layer material.
+    -   `Model/Soil_Leaves/` --- CNN, DANN, and FNO model notebooks
+        for the soil-leaves configuration.
+    -   `Model/Soil_Woodchips/` --- CNN, DANN, and FNO model
+        notebooks for the soil-woodchips configuration.
+-   `Framework_Overview.jpg` --- Overview of the proposed framework.
 
 ## Models
 
@@ -58,7 +62,10 @@ The study investigates the following data-driven approaches:
 
 - **MiTSformer:** A Transformer-based time-series regression baseline.
 
-- **FNO:** The proposed Fourier Neural Operator model.
+- **FNO:** The proposed Fourier neural operator model.
+
+The corresponding model files are located within the `Model/` directories
+of these configurations.
 
 ## Synthetic Data Generation
 
