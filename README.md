@@ -52,9 +52,9 @@ The repository is organized according to the four experimental configurations in
 
 The study investigates the following data-driven approaches:
 
-- **1D CNN:** A one-dimensional convolutional neural network used as a supervised baseline.
+- **1D CNN:** One-dimensional convolutional neural network baseline.
 
-- **DANN:** A domain adversarial neural network used as an unsupervised domain-adaptation baseline.
+- **DANN:** Domain adversarial neural network baseline.
 
 - **MiTSformer:** A Transformer-based time-series regression baseline.
 
