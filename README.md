@@ -26,20 +26,6 @@ The proposed framework consists of four main stages:
 
 For the field experiments, soil moisture variation is additionally evaluated in terms of volumetric water content (VWC).
 
-## Experimental Configurations
-
-The study considers four representative experimental scenarios:
-
-- **Laboratory single-layer material:** A single soil layer with varying moisture conditions. Relative permittivity, electrical conductivity, and layer depth are estimated.
-
-- **Laboratory two-layer material:** A layer of wood shavings placed over soil. Material properties of both the soil and wood-shavings layers are investigated.
-
-- **Field single-layer material:** Bare soil monitored under realistic environmental conditions, including rainfall-induced variations in soil moisture.
-
-- **Field two-layer material:** Soil covered by an upper layer consisting of natural leaves or wood chips. Soil moisture variations are estimated under realistic field conditions.
-
-Real-world GPR measurements are collected using a GSSI StructureScan MiniXT system equipped with a 2,700 MHz antenna. Synthetic source-domain GPR signals are generated using gprMax.
-
 ## Repository Contents
 
 The repository is organized according to the four experimental configurations investigated in the study:
@@ -66,23 +52,13 @@ The repository is organized according to the four experimental configurations in
 
 The study investigates the following data-driven approaches:
 
-- **1D CNN:** A one-dimensional convolutional neural network used as a supervised baseline. The model is trained using labeled synthetic GPR data and evaluated on experimental measurements.
+- **1D CNN:** A one-dimensional convolutional neural network used as a supervised baseline.
 
-- **DANN:** A domain adversarial neural network used as an unsupervised domain-adaptation baseline. DANN uses labeled synthetic source-domain data together with unlabeled real target-domain data to learn domain-invariant representations.
+- **DANN:** A domain adversarial neural network used as an unsupervised domain-adaptation baseline.
 
-- **MiTSformer:** A Transformer-based time-series regression baseline. MiTSformer is trained exclusively on synthetic GPR data and subsequently evaluated on experimental measurements under the same zero-shot evaluation setting used for the FNO.
+- **MiTSformer:** A Transformer-based time-series regression baseline.
 
-- **FNO:** The proposed Fourier Neural Operator model. The FNO is trained exclusively on synthetic GPR data and directly applied to real-world GPR measurements without using real-world data during model training. Spectral convolution and Fourier-mode truncation enable the model to capture global wave interactions while facilitating resolution- and domain-invariant generalization.
-
-## Fourier Neural Operator
-
-The FNO learns mappings between functions using spectral convolution in the Fourier domain. The input GPR waveform is treated as a discretized realization of an underlying continuous function.
-
-The model transforms the signal into the Fourier domain using the fast Fourier transform (FFT), applies learnable transformations to a truncated set of Fourier modes, and then transforms the representation back to the original domain using the inverse fast Fourier transform (IFFT).
-
-By retaining the dominant Fourier modes, the FNO emphasizes low-frequency spectral information associated with global wave behavior while reducing sensitivity to high-frequency discrepancies caused by measurement noise, discretization differences, and modeling uncertainties.
-
-This formulation also allows the learned operator to be evaluated on temporal discretizations different from those used during training.
+- **FNO:** The proposed Fourier Neural Operator model.
 
 ## Synthetic Data Generation
 
