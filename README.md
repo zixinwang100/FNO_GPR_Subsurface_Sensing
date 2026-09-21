@@ -146,8 +146,9 @@ Model performance is evaluated using the following metrics:
 - Root mean squared error (`RMSE`)
 - Unbiased root mean squared error (`ubRMSE`)
 - Standard deviation of predictions
-- Training time
-- Inference time
+- Training cost
+- Inference latency
+- Peak GPU memory
 
 The Pearson correlation coefficient is used to evaluate the capability of each model to capture the underlying physical variability of the target material properties, while bias, RMSE, and ubRMSE provide complementary measures of estimation accuracy.
 
